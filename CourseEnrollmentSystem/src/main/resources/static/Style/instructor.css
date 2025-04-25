@@ -1,0 +1,148 @@
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+}
+
+/* Main Container */
+.container {
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  color: #333;
+  transform: translateY(-50px);
+  animation: slideIn 1s ease-out forwards;
+}
+
+/* Heading Style */
+h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: #f4f4f4;
+  border-radius: 10px;
+}
+
+/* Input Field Styling */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"] {
+  padding: 14px 20px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus {
+  border-color: #ff7e5f;
+  box-shadow: 0px 0px 8px rgba(255, 126, 95, 0.7);
+}
+
+/* Submit Button Styling */
+button {
+  padding: 12px 30px;
+  font-size: 18px;
+  background-color: #ff7e5f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #feb47b;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Remove Instructor Section */
+.remove-instructor {
+  margin-top: 30px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.remove-instructor input {
+  margin-bottom: 15px;
+}
+
+.remove-instructor button {
+  background-color: #e74c3c;
+}
+
+.remove-instructor button:hover {
+  background-color: #c0392b;
+}
+
+.remove-instructor button:active {
+  background-color: #b03a2e;
+}
+
+/* Footer Section */
+footer {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+/* Keyframe for Slide-In Animation */
+@keyframes slideIn {
+  0% { transform: translateY(-100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  input[type="text"], input[type="email"], input[type="number"], input[type="date"] {
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px 25px;
+  }
+}

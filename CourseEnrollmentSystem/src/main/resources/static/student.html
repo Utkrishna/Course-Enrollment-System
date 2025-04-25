@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><title>Student Operations</title></head>
+<link rel="stylesheet" href="Style/student.css">
+<body>
+
+	
+  <h2>Save Student</h2>
+  <form id="save-student">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="date" id="dob" placeholder="DOB" required />
+    <button type="submit">Save</button>
+  </form>
+
+  
+
+  <h2>Remove Student</h2>
+  <form id="delete-student">
+    <input type="number" id="deleteStudentId" placeholder="Student ID" required />
+    <button type="submit">Remove</button>
+  </form>
+
+  <script>
+    document.getElementById('save-student').addEventListener('submit', e => {
+      e.preventDefault();
+      const student = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        dateOfBirth: document.getElementById('dob').value
+      };
+      fetch('/student', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(student)
+      }).then(res => res.ok ? alert('Saved') : alert('Error'));
+    });
+
+    
+
+    document.getElementById('delete-student').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = document.getElementById('deleteStudentId').value;
+      fetch(`/student/${id}`, { method: 'DELETE' })
+        .then(res => res.ok ? alert("Deleted") : alert("Error"));
+    });
+  </script>
+</body>
+</html>

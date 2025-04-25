@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head><title>Instructor Operations</title></head>
+<link rel="stylesheet" href="Style/instructor.css">
+<body>
+  <h2>Save Instructor</h2>
+  <form id="save-instructor">
+    <input type="text" id="name" placeholder="Name" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="specialization" placeholder="Specialization" required />
+    <button type="submit">Save</button>
+  </form>
+
+  
+  <h2>Remove Instructor</h2>
+  <form id="delete-instructor">
+    <input type="number" id="deleteInstructorId" placeholder="Instructor ID" required />
+    <button type="submit">Remove</button>
+  </form>
+
+  <script>
+    document.getElementById('save-instructor').addEventListener('submit', e => {
+      e.preventDefault();
+      const instructor = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        specialization: document.getElementById('specialization').value
+      };
+      fetch('/instructor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(instructor)
+      }).then(res => res.ok ? alert('Saved') : alert('Error'));
+    });
+
+    
+
+    document.getElementById('delete-instructor').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = document.getElementById('deleteInstructorId').value;
+      fetch(`/instructor/${id}`, { method: 'DELETE' })
+        .then(res => res.ok ? alert("Deleted") : alert("Error"));
+    });
+  </script>
+</body>
+</html>

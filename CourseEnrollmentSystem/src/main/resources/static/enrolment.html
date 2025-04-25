@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head><title>Enrolment Operations</title></head>
+<link rel="stylesheet" href="Style/enrolment.css">
+
+<body>
+  <h2>Save Enrolment</h2>
+  <form id="save-enrolment">
+    <input type="number" id="studentId" placeholder="Student ID" required />
+    <input type="number" id="courseId" placeholder="Course ID" required />
+    <input type="date" id="enrolledDate" required />
+    <button type="submit">Save</button>
+  </form>
+
+  
+
+  <h2>Remove Enrolment</h2>
+  <form id="delete-enrolment">
+    <input type="number" id="deleteEnrolmentId" placeholder="Enrolment ID" required />
+    <button type="submit">Remove</button>
+  </form>
+
+  <script>
+    document.getElementById('save-enrolment').addEventListener('submit', e => {
+      e.preventDefault();
+      const enrolment = {
+        student: { id: document.getElementById('studentId').value },
+        course: { id: document.getElementById('courseId').value },
+        enrolledDate: document.getElementById('enrolledDate').value
+      };
+      fetch('/enrolment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(enrolment)
+      }).then(res => res.ok ? alert('Saved') : alert('Error'));
+    });
+
+    
+
+    document.getElementById('delete-enrolment').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = document.getElementById('deleteEnrolmentId').value;
+      fetch(`/enrolment/${id}`, { method: 'DELETE' })
+        .then(res => res.ok ? alert("Deleted") : alert("Error"));
+    });
+  </script>
+</body>
+</html>
